@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+error_reporting(E_ALL); 
 
 include('jsontest.php');
 
