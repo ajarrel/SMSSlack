@@ -1,5 +1,14 @@
 <?php
 header("Content-Type: text/plain");
+function urlEncodeArray($arr){ //urlencodes array
+	$query = '';
+	foreach($arr as $key => $val){
+		$query = $query . urlencode($key) . '' . urlencode($val) . '&';
+	}
+	
+	return substr($query, 0, -1);
+}
+
 function fixSitelinkDate($str, $format = 'm/d/Y'){
 	$pos = strpos($str,"T");
 	$str = substr($str, 0, $pos);

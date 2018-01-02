@@ -1,10 +1,10 @@
 <?php
-function pushOutput($url, $d, $dest = 'curl', $die = false){ //$dest === 'curl' or 'stdout' $d = data to be written, $url = url (curl only), $die = true means kill instead of return a value
+function pushOutput($url, $d, $dest = 'curl', $die = false, $header = 'application/json'){ //$dest === 'curl' or 'stdout' $d = data to be written, $url = url (curl only), $die = true means kill instead of return a value
 	
 	if($dest === 'curl'){
 		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $d);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:'.$header)); //allow for curl to send other data types besides application/json
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
